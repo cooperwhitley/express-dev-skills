@@ -2,9 +2,11 @@ var express = require('express');
 var router = express.Router();
 var skillsCtrl = require('../controllers/skills');
 
-/* GET skills listing. */
-router.get('/', function(req, res, next) {
-  res.render('skills', { title: 'Skills' });
-});
+router.get('/', skillsCtrl.index);
+router.get('/:id', skillsCtrl.show);
+router.get('/new', skillsCtrl.new);
+router.post('/', skillsCtrl.create);
+router.delete('/:id', skillsCtrl.delete);
+router.put('/:id', skillsCtrl.update);
 
 module.exports = router;
